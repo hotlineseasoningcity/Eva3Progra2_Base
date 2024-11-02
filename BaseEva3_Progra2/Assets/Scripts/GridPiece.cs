@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridPiece : MonoBehaviour
+public abstract class GridPiece : MonoBehaviour
 {
     [SerializeField] protected MeshRenderer mesh;
     public Vector2Int pos;
     public bool isWalkable;
     public bool isEmpty;
+    public GridPieceType pieceType;
     protected Color defaultColor;
-    GridEntity currentGridEntity;
+    protected GridEntity currentGridEntity;
 
     //Se encarga de cambiar el color de la pieza
     public void ChangeColor(Color color, bool isDefaultColor)
@@ -36,14 +37,10 @@ public class GridPiece : MonoBehaviour
     }
 
     //Acion que realiza la pieza si una entidad se encuentra en ella en ella DEBE SER LLAMADA
-    public virtual void OnEntityStay()
-    {
+    public abstract void OnEntityStay();
 
-    }
 
     //Acion que realiza la pieza si una entidad sale de ella DEBE SER LLAMADA
-    public virtual void OnEntityExit()
-    {
+    public abstract void OnEntityExit();
 
-    }
 }
