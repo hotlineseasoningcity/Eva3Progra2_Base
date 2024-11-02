@@ -7,6 +7,11 @@ public class GridEntity_Movible_Bullet : GridEntity_Movible
     public Vector2Int bulletDir;
     public float dmg;
 
+    protected override void Awake2()
+    {
+
+    }
+
     public void SetBullet(Vector2Int dir, Vector2Int bulletPos, GridManager gridManager)
     {
         gridPos = bulletPos;
@@ -66,11 +71,16 @@ public class GridEntity_Movible_Bullet : GridEntity_Movible
 
     public override void TakeDamage(float dmg)
     {
-        DestroyBullet();
+        Die();
     }
 
     void DestroyBullet()
     {
         Destroy(gameObject);
+    }
+
+    protected override void Die()
+    {
+        DestroyBullet();
     }
 }

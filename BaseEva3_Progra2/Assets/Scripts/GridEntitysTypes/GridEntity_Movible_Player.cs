@@ -6,12 +6,10 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 {
     public GridShooter gridShooter;
     public Vector2Int startPos;
-    public float life;
-    public float currentLife;
 
-    private void Awake()
+    protected override void Awake2()
     {
-        currentLife = life;        
+
     }
 
     private void Start()
@@ -32,7 +30,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         }
     }  
 
-    void SetPlayerPos(Vector2Int pos)
+    public void SetPlayerPos(Vector2Int pos)
     {
         gridPos = pos;
         gridManager.GetGridPiece(pos).OnEntityEnter(this);
@@ -73,17 +71,9 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         other.InteractWhitOtherEntity(this);
     }
 
-    public override void TakeDamage(float dmg)
-    {
-        currentLife--;
-        if(currentLife <= 0)
-        {
-            PlayerDead();
-        }
-    }
 
-    void PlayerDead()
+    protected override void Die()
     {
-
+        print("PlayerDead");
     }
 }

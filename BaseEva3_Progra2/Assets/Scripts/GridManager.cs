@@ -83,7 +83,7 @@ public class GridManager : MonoBehaviour
     }
 
     //Se encarga de elegir el tipo de pieza segun la posicion
-    public GridPieceType GetPieceType(Vector2Int pos)
+    GridPieceType GetPieceType(Vector2Int pos)
     {
         GridPieceType gridPieceType = GridPieceType.Empty;
         if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
