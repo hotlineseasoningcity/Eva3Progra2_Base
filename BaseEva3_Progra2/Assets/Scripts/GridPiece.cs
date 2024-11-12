@@ -12,14 +12,12 @@ public abstract class GridPiece : MonoBehaviour
     protected Color defaultColor;
     protected GridEntity currentGridEntity;
 
-    //Se encarga de cambiar el color de la pieza
     public void ChangeColor(Color color, bool isDefaultColor)
     {
         mesh.material.color = color;
         if(isDefaultColor) defaultColor = color;
     }
 
-    //Se encarga de resetar el color, si es que existe
     public void ResetColor()
     {
         if(defaultColor == null)
