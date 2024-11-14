@@ -11,6 +11,7 @@ public class GridManager : MonoBehaviour
 
     public GameObject wallPref;
     public GameObject wallDestructiblePref;
+    public GameObject lava;
 
     public GridPiece[,] grid;
 
@@ -77,6 +78,13 @@ public class GridManager : MonoBehaviour
                 gridPiece_WallDestructible.CreateWall(wallDestructiblePref);
                 piece = gridPiece_WallDestructible;
                 break;
+            case GridPieceType.Damage:
+                GridPiece_Obstaculo gridPiece_Obstaculo = pieceObj.GetComponent<GridPiece_Obstaculo>();
+                gridPiece_Obstaculo.isWalkable = true;
+                gridPiece_Obstaculo.isEmpty = true;
+                piece = gridPiece_Obstaculo;
+                break;
+
         }
 
         return piece;   
@@ -86,13 +94,17 @@ public class GridManager : MonoBehaviour
     GridPieceType GetPieceType(Vector2Int pos)
     {
         GridPieceType gridPieceType = GridPieceType.Empty;
-        if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
+        if (pos.x == 0 || pos.x == gridSize.x - 1 || pos.y == 0 || pos.y == gridSize.y - 1)
         {
             gridPieceType = GridPieceType.Wall;
         }
         else if (pos.x == 1 || pos.x == gridSize.x - 2 || pos.y == 1 || pos.y == gridSize.y - 2)
         {
             gridPieceType = GridPieceType.DestructibleWall;
+        }
+        else if (pos.x == 3 && pos.y == 3)
+        {
+            gridPieceType = GridPieceType.Damage;
         }
         return gridPieceType;
     }
