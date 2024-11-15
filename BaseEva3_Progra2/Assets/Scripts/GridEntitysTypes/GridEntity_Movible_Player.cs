@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GridEntity_Movible_Player : GridEntity_Movible
 {
-    public GridShooter gridShooter;
     public Vector2Int startPos;
 
     protected override void Awake2()
@@ -22,11 +21,6 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         if (!isMoving)
         {
             MoveInputs();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            gridShooter.Shoot(gridPos);
         }
     }  
 

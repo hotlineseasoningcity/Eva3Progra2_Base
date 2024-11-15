@@ -4,27 +4,15 @@ using UnityEngine;
 
 public class GridPiece_Wall : GridPiece
 {
-    public bool isDestructible;
-    public bool isDestroyed;
     public float yOffSet;
     GameObject wall;
 
     public void CreateWall(GameObject wallPref)
     {
         Vector3 pos = transform.position;
-        pos += Vector3.up * yOffSet; 
-        wall = Instantiate(wallPref, pos, Quaternion.identity,transform);
-    }
-
-    public void DestroyWall()
-    {
-        if(isDestructible)
-        {
-            Destroy(wall);
-            isWalkable = true;
-            isEmpty = true;
-            isDestroyed = true;
-        }
+        wall = Instantiate(wallPref, pos + Vector3.up * yOffSet, Quaternion.identity, transform);
+        MeshRenderer wallMesh = wall.GetComponent<MeshRenderer>();
+        wallMesh.material.color = GetRainbowColor((pos.x + pos.y / (float)(7 + 80)));
     }
 
     public override void OnEntityExit()
@@ -35,5 +23,13 @@ public class GridPiece_Wall : GridPiece
     public override void OnEntityStay()
     {
 
+    }
+
+    Color GetRainbowColor(float value)
+    {
+        float r = Mathf.Sin(value * Mathf.PI * 2) * 0.5f + 0.5f;
+        float g = Mathf.Sin((value + 0.33f) * Mathf.PI * 2) * 0.5f + 0.5f;
+        float b = Mathf.Sin((value + 0.66f) * Mathf.PI * 2) * 0.5f + 0.5f;
+        return new Color(r, g, b);
     }
 }

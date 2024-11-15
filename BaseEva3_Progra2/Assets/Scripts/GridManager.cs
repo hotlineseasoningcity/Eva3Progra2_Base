@@ -10,7 +10,6 @@ public class GridManager : MonoBehaviour
     public Transform parent;
 
     public GameObject wallPref;
-    public GameObject wallDestructiblePref;
     public GameObject obstaclePref;
 
     public GridPiece[,] grid;
@@ -64,29 +63,20 @@ public class GridManager : MonoBehaviour
                 break;
             case GridPieceType.Wall:
                 GridPiece_Wall gridPiece_Wall = pieceObj.GetComponent<GridPiece_Wall>();
-                gridPiece_Wall.isWalkable = false;
                 gridPiece_Wall.isEmpty = false;
-                gridPiece_Wall.isDestructible = false;
+                gridPiece_Wall.isWalkable = false;
                 gridPiece_Wall.CreateWall(wallPref);
+                gridPiece_Wall.ChangeColor(GetRainbowColor((gridPos.x + gridPos.y) / (float)(7 + 80)), false);
                 piece = gridPiece_Wall;
-                break;
-            case GridPieceType.DestructibleWall:
-                GridPiece_Wall gridPiece_WallDestructible = pieceObj.GetComponent<GridPiece_Wall>();
-                gridPiece_WallDestructible.isWalkable = false;
-                gridPiece_WallDestructible.isEmpty = false;
-                gridPiece_WallDestructible.isDestructible = true;
-                gridPiece_WallDestructible.CreateWall(wallDestructiblePref);
-                piece = gridPiece_WallDestructible;
                 break;
             case GridPieceType.Obstacle:
                 GridPiece_Obstacle gridPiece_Obstacle = pieceObj.GetComponent<GridPiece_Obstacle>();
-                gridPiece_Obstacle.isWalkable = true;
                 gridPiece_Obstacle.isEmpty = true;
+                gridPiece_Obstacle.isWalkable = true;
                 gridPiece_Obstacle.CreateWall(obstaclePref);
                 piece = gridPiece_Obstacle;
                 break;
         }
-
         return piece;   
     }
 
@@ -98,15 +88,19 @@ public class GridManager : MonoBehaviour
         {
             gridPieceType = GridPieceType.Wall;
         }
-        else if (pos.x == 1 || pos.x == gridSize.x - 2 || pos.y == 1 || pos.y == gridSize.y - 2)
-        {
-            gridPieceType = GridPieceType.DestructibleWall;
-        }
         else if (pos.x == 3 && pos.y == 3)
         {
             gridPieceType = GridPieceType.Obstacle;
         }
         return gridPieceType;
+    }
+
+    Color GetRainbowColor(float value)
+    {
+        float r = Mathf.Sin(value * Mathf.PI * 2) * 0.5f + 0.5f;
+        float g = Mathf.Sin((value + 0.33f) * Mathf.PI * 2) * 0.5f + 0.5f;
+        float b = Mathf.Sin((value + 0.66f) * Mathf.PI * 2) * 0.5f + 0.5f;
+        return new Color(r, g, b);
     }
 
     public bool IsPieceWalkable(Vector2Int piecePos)

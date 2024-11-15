@@ -101,5 +101,4 @@ MonoBehaviour:
   isWalkable: 0
   isEmpty: 0
   pieceType: 1
-  isDestructible: 1
   yOffSet: 1
