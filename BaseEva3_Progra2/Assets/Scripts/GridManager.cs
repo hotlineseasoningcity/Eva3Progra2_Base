@@ -22,7 +22,7 @@ public class GridManager : MonoBehaviour
     //Se encarga de crear la grilla
     public void CreateGrid()
     {
-        //Inicializo la matriz (arreglo bidimensional) segun el tamaño de la grilla
+        //Inicializo la matriz (arreglo bidimensional) segun el tamaï¿½o de la grilla
         grid = new GridPiece[gridSize.x, gridSize.y];
 
         for (int x = 0; x < gridSize.x; x++)
@@ -66,7 +66,7 @@ public class GridManager : MonoBehaviour
                 gridPiece_Wall.isEmpty = false;
                 gridPiece_Wall.isWalkable = false;
                 gridPiece_Wall.CreateWall(wallPref);
-                gridPiece_Wall.ChangeColor(GetRainbowColor((gridPos.x + gridPos.y) / (float)(7 + 80)), false);
+                gridPiece_Wall.ChangeColor(Color.black, false);
                 piece = gridPiece_Wall;
                 break;
             case GridPieceType.Obstacle:
@@ -93,14 +93,6 @@ public class GridManager : MonoBehaviour
             gridPieceType = GridPieceType.Obstacle;
         }
         return gridPieceType;
-    }
-
-    Color GetRainbowColor(float value)
-    {
-        float r = Mathf.Sin(value * Mathf.PI * 2) * 0.5f + 0.5f;
-        float g = Mathf.Sin((value + 0.33f) * Mathf.PI * 2) * 0.5f + 0.5f;
-        float b = Mathf.Sin((value + 0.66f) * Mathf.PI * 2) * 0.5f + 0.5f;
-        return new Color(r, g, b);
     }
 
     public bool IsPieceWalkable(Vector2Int piecePos)
