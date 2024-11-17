@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridPiece_Wall : GridPiece
 {
     public float yOffSet;
+    public Color[] colors;
     GameObject wall;
 
     public void CreateWall(GameObject wallPref)
@@ -12,7 +13,7 @@ public class GridPiece_Wall : GridPiece
         Vector3 pos = transform.position;
         wall = Instantiate(wallPref, pos + Vector3.up * yOffSet, Quaternion.identity, transform);
         MeshRenderer wallMesh = wall.GetComponent<MeshRenderer>();
-        wallMesh.material.color = GetRainbowColor((pos.x + pos.y / (float)(7 + 80)));
+        StartCoroutine(Rainbow(wallMesh));
     }
 
     public override void OnEntityExit()
@@ -25,11 +26,27 @@ public class GridPiece_Wall : GridPiece
 
     }
 
-    Color GetRainbowColor(float value)
+    IEnumerator Rainbow(MeshRenderer mesh)
     {
-        float r = Mathf.Sin(value * Mathf.PI * 2) * 0.5f + 0.5f;
-        float g = Mathf.Sin((value + 0.33f) * Mathf.PI * 2) * 0.5f + 0.5f;
-        float b = Mathf.Sin((value + 0.66f) * Mathf.PI * 2) * 0.5f + 0.5f;
-        return new Color(r, g, b);
+        if (colors.Length > 0)
+        {
+            float dividedDuration = 5f / colors.Length;
+
+            while (true)
+            {
+                for (int i = 0; i < colors.Length - 1; i++)
+                {
+                    float t = 0f;
+                    
+                    while (t < (1f + Mathf.Epsilon))
+                    {
+                        mesh.material.color = Color.Lerp(colors[i], colors[i + 1], t);
+                        t += Time.deltaTime / dividedDuration;
+                        yield return null;
+                    }
+                    mesh.material.color = Color.Lerp(colors[i], colors[i + 1], 1f);
+                }
+            }
+        }
     }
 }

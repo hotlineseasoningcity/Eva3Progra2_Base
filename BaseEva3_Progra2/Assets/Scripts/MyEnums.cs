@@ -3,7 +3,9 @@ public enum GridPieceType
 {
     Empty,
     Wall,
-    Obstacle
+    Obstacle,
+    Banana,
+    Coke
 }
 
 public enum EntityType
