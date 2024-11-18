@@ -9,8 +9,8 @@ public class GridManager : MonoBehaviour
     public Vector2Int gridSize;
     public Transform parent;
 
-    public GameObject wallPref, obstaclePref, bananaPref, cokePref;
-    public Color green, darkerGreen;
+    public GameObject victoryPref, wallPref, obstaclePref, bananaPref, cokePref;
+    public Color lighterGreen, lightGreen, green, darkerGreen;
 
     public GridPiece[,] grid;
 
@@ -61,6 +61,12 @@ public class GridManager : MonoBehaviour
                 gridPiece_Empty.isWalkable = true;
                 piece = gridPiece_Empty;
                 break;
+            case GridPieceType.Victory:
+                GridPiece_Victory gridPiece_Victory = pieceObj.GetComponent<GridPiece_Victory>();
+                gridPiece_Victory.isEmpty = true;
+                gridPiece_Victory.isWalkable = true;
+                piece = gridPiece_Victory;
+                break;
             case GridPieceType.Wall:
                 GridPiece_Wall gridPiece_Wall = pieceObj.GetComponent<GridPiece_Wall>();
                 gridPiece_Wall.isEmpty = false;
@@ -100,6 +106,17 @@ public class GridManager : MonoBehaviour
             piece.ChangeColor(darkerGreen, false);
         }
 
+        if (gridPos.x <= 5 && gridPos.y >= 76)
+        {
+            
+            piece.ChangeColor(lightGreen, false);
+
+            if ((gridPos.x + gridPos.y) % 2 == 0)
+            {
+                piece.ChangeColor(lighterGreen, false);
+            }
+        }
+
         return piece;   
     }
 
@@ -122,6 +139,10 @@ public class GridManager : MonoBehaviour
         else if (Random.Range(0f, 10f) < 0.15f)
         {
             gridPieceType = GridPieceType.Coke;
+        }
+        else if (pos.x == 5 && pos.y == 78)
+        {
+            gridPieceType = GridPieceType.Victory;
         }
 
         return gridPieceType;

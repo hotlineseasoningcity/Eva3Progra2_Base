@@ -2,6 +2,7 @@
 public enum GridPieceType
 {
     Empty,
+    Victory,
     Wall,
     Obstacle,
     Banana,

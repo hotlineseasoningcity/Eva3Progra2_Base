@@ -153,16 +153,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPiecesPrefabs:
   - {fileID: 342625477250844931, guid: 9bff716e695893347add73579a58c012, type: 3}
+  - {fileID: 2386434280516340183, guid: f95a07a78e530a028968e2711c5524a2, type: 3}
   - {fileID: 1018440231605446837, guid: 5764f58d526081c45afb841fdfe7cd1f, type: 3}
   - {fileID: 1108339041995159477, guid: 1cdf2134f935eaa4fa19bd98cb93e945, type: 3}
   - {fileID: 1018440231605446837, guid: 40da209fb489ecbafafff56a204e6550, type: 3}
   - {fileID: 1018440231605446837, guid: bcb91728fcbcef61595934d1d45bb355, type: 3}
   gridSize: {x: 7, y: 80}
   parent: {fileID: 863806968}
+  victoryPref: {fileID: 2386434280516340183, guid: f95a07a78e530a028968e2711c5524a2, type: 3}
   wallPref: {fileID: 1744140219005918704, guid: 16608fe5f0d1848429d3a15335775c49, type: 3}
   obstaclePref: {fileID: 1108339041995159477, guid: 1cdf2134f935eaa4fa19bd98cb93e945, type: 3}
   bananaPref: {fileID: 303489876756636593, guid: ae2dd90884527be08b16d79f1843cf2d, type: 3}
   cokePref: {fileID: 3301501191795869634, guid: ff8cd3ef73e563b1ab2848c3b2522c12, type: 3}
+  lighterGreen: {r: 0.876424, g: 0.9528302, b: 0.89075017, a: 0}
+  lightGreen: {r: 0.75444996, g: 0.9245283, b: 0.75444996, a: 0}
   green: {r: 0.5752492, g: 0.8773585, b: 0.61413455, a: 0}
   darkerGreen: {r: 0.4278537, g: 0.745283, b: 0.4253738, a: 0}
 --- !u!4 &389208968

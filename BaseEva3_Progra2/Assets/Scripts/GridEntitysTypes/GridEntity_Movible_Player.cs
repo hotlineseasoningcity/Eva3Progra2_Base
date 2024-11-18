@@ -68,6 +68,8 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
     protected override void Die()
     {
+        gameObject.SetActive(false);
+        hasLost = true;
         print("PlayerDead");
     }
 }

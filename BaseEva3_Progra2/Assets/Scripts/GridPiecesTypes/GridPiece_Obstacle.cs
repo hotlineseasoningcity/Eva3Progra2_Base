@@ -14,7 +14,7 @@ public class GridPiece_Obstacle : GridPiece
         Vector3 pos = transform.position;
         obstacle = Instantiate(obstaclePref, pos + Vector3.up * yOffSet, Quaternion.identity, transform);
         MeshRenderer obstacleMesh = obstacle.GetComponent<MeshRenderer>();
-        obstacleMesh.material.color = Random.ColorHSV(0, 1, 0.95f, 0.95f, 0.95f, 0.95f);
+        obstacleMesh.material.color = Random.ColorHSV(0, 1, 0.85f, 0.85f, 0.95f, 0.95f);
     }
 
     public override void OnEntityEnter(GridEntity gridEntity)
