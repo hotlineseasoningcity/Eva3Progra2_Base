@@ -7,13 +7,14 @@ public class GridPiece_Obstacle : GridPiece
     public bool isDestructible;
     public bool isDestroyed;
     public float yOffSet;
-    GameObject wall;
+    GameObject obstacle;
 
-    public void CreateWall(GameObject wallPref)
+    public void CreateWall(GameObject obstaclePref)
     {
         Vector3 pos = transform.position;
-        pos += Vector3.up * yOffSet; 
-        wall = Instantiate(wallPref, pos, Quaternion.identity,transform);
+        obstacle = Instantiate(obstaclePref, pos + Vector3.up * yOffSet, Quaternion.identity, transform);
+        MeshRenderer obstacleMesh = obstacle.GetComponent<MeshRenderer>();
+        obstacleMesh.material.color = Random.ColorHSV(0, 1, 0.95f, 0.95f, 0.95f, 0.95f);
     }
 
     public override void OnEntityEnter(GridEntity gridEntity)

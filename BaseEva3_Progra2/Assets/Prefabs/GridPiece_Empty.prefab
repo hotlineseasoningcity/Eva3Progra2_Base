@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84b8e5afb57ee024e99b59ec915a2e90, type: 2}
+  - {fileID: 2100000, guid: 00dafe28fadf115c4ade23212f6a9a34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,3 +100,4 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   isWalkable: 1
   isEmpty: 1
+  pieceType: 0

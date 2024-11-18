@@ -9,8 +9,8 @@ public class GridManager : MonoBehaviour
     public Vector2Int gridSize;
     public Transform parent;
 
-    public GameObject wallPref;
-    public GameObject obstaclePref;
+    public GameObject wallPref, obstaclePref, bananaPref, cokePref;
+    public Color green, darkerGreen;
 
     public GridPiece[,] grid;
 
@@ -66,7 +66,6 @@ public class GridManager : MonoBehaviour
                 gridPiece_Wall.isEmpty = false;
                 gridPiece_Wall.isWalkable = false;
                 gridPiece_Wall.CreateWall(wallPref);
-                gridPiece_Wall.ChangeColor(Color.black, false);
                 piece = gridPiece_Wall;
                 break;
             case GridPieceType.Obstacle:
@@ -76,22 +75,55 @@ public class GridManager : MonoBehaviour
                 gridPiece_Obstacle.CreateWall(obstaclePref);
                 piece = gridPiece_Obstacle;
                 break;
+            case GridPieceType.Banana:
+                GridPiece_Banana gridPiece_Banana = pieceObj.GetComponent<GridPiece_Banana>();
+                gridPiece_Banana.isEmpty = true;
+                gridPiece_Banana.isWalkable = true;
+                gridPiece_Banana.CreateWall(bananaPref);
+                piece = gridPiece_Banana;
+                break;
+            case GridPieceType.Coke:
+                GridPiece_Coke gridPiece_Coke = pieceObj.GetComponent<GridPiece_Coke>();
+                gridPiece_Coke.isEmpty = true;
+                gridPiece_Coke.isWalkable = true;
+                gridPiece_Coke.CreateWall(cokePref);
+                piece = gridPiece_Coke;
+                break;
         }
+
+        if ((gridPos.x + gridPos.y) % 2 == 0)
+        {
+            piece.ChangeColor(green, false);
+        }
+        else
+        {
+            piece.ChangeColor(darkerGreen, false);
+        }
+
         return piece;   
     }
 
-    //Se encarga de elegir el tipo de pieza segun la posicion
     GridPieceType GetPieceType(Vector2Int pos)
     {
         GridPieceType gridPieceType = GridPieceType.Empty;
+
         if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
         {
             gridPieceType = GridPieceType.Wall;
         }
-        else if (pos.x == 3 && pos.y == 3)
+        else if (Random.Range(0f, 10f) < 0.45f)
         {
             gridPieceType = GridPieceType.Obstacle;
         }
+        else if (Random.Range(0f, 10f) < 0.25f)
+        {
+            gridPieceType = GridPieceType.Banana;
+        }
+        else if (Random.Range(0f, 10f) < 0.15f)
+        {
+            gridPieceType = GridPieceType.Coke;
+        }
+
         return gridPieceType;
     }
 
