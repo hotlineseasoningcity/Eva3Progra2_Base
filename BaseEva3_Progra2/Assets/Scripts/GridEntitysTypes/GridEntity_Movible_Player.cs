@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class GridEntity_Movible_Player : GridEntity_Movible
@@ -30,6 +31,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
     {
         gridPos = pos;
         gridManager.GetGridPiece(pos).OnEntityEnter(this);
+        transform.position = new Vector3(pos.x, yPos, pos.y);
     }
 
     void MoveInputs()

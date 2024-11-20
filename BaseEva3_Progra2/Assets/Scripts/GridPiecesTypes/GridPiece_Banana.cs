@@ -6,6 +6,7 @@ public class GridPiece_Banana : GridPiece
 {
     public float yOffSet;
     GameObject banana;
+    bool isTouched;
 
     public void CreateWall(GameObject bananaPref)
     {
@@ -15,8 +16,14 @@ public class GridPiece_Banana : GridPiece
 
     public override void OnEntityEnter(GridEntity gridEntity)
     {
-        currentGridEntity = gridEntity;
-        gridEntity.life += 2;
+        if (!isTouched)
+        {
+            isTouched = true;
+            currentGridEntity = gridEntity;
+            gridEntity.life += 2;
+            Destroy(banana);
+        }
+
     }
 
     public override void OnEntityExit()

@@ -6,7 +6,7 @@ public class GridPiece_Coke : GridPiece
 {
     public float yOffSet;
     GameObject coke;
-
+    bool isTouched;
     public void CreateWall(GameObject cokePref)
     {
         Vector3 pos = transform.position;
@@ -15,7 +15,13 @@ public class GridPiece_Coke : GridPiece
 
     public override void OnEntityEnter(GridEntity gridEntity)
     {
-        currentGridEntity = gridEntity;
+        if (!isTouched)
+        {
+            isTouched = true;
+            currentGridEntity = gridEntity;
+            Destroy(coke);
+        }
+
         //subirle felicidad
     }
 
