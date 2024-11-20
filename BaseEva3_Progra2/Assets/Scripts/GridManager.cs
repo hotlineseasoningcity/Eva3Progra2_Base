@@ -9,9 +9,14 @@ public class GridManager : MonoBehaviour
     public Vector2Int gridSize;
     public Transform parent;
 
+<<<<<<< HEAD
     public GameObject wallPref;
     public GameObject wallDestructiblePref;
     public GameObject lava;
+=======
+    public GameObject victoryPref, wallPref, obstaclePref, bananaPref, cokePref;
+    public Color lighterGreen, lightGreen, green, darkerGreen;
+>>>>>>> CreaturaDanger
 
     public GridPiece[,] grid;
 
@@ -23,7 +28,7 @@ public class GridManager : MonoBehaviour
     //Se encarga de crear la grilla
     public void CreateGrid()
     {
-        //Inicializo la matriz (arreglo bidimensional) segun el tamaño de la grilla
+        //Inicializo la matriz (arreglo bidimensional) segun el tamaï¿½o de la grilla
         grid = new GridPiece[gridSize.x, gridSize.y];
 
         for (int x = 0; x < gridSize.x; x++)
@@ -62,22 +67,27 @@ public class GridManager : MonoBehaviour
                 gridPiece_Empty.isWalkable = true;
                 piece = gridPiece_Empty;
                 break;
+            case GridPieceType.Victory:
+                GridPiece_Victory gridPiece_Victory = pieceObj.GetComponent<GridPiece_Victory>();
+                gridPiece_Victory.isEmpty = true;
+                gridPiece_Victory.isWalkable = true;
+                piece = gridPiece_Victory;
+                break;
             case GridPieceType.Wall:
                 GridPiece_Wall gridPiece_Wall = pieceObj.GetComponent<GridPiece_Wall>();
-                gridPiece_Wall.isWalkable = false;
                 gridPiece_Wall.isEmpty = false;
-                gridPiece_Wall.isDestructible = false;
+                gridPiece_Wall.isWalkable = false;
                 gridPiece_Wall.CreateWall(wallPref);
                 piece = gridPiece_Wall;
                 break;
-            case GridPieceType.DestructibleWall:
-                GridPiece_Wall gridPiece_WallDestructible = pieceObj.GetComponent<GridPiece_Wall>();
-                gridPiece_WallDestructible.isWalkable = false;
-                gridPiece_WallDestructible.isEmpty = false;
-                gridPiece_WallDestructible.isDestructible = true;
-                gridPiece_WallDestructible.CreateWall(wallDestructiblePref);
-                piece = gridPiece_WallDestructible;
+            case GridPieceType.Obstacle:
+                GridPiece_Obstacle gridPiece_Obstacle = pieceObj.GetComponent<GridPiece_Obstacle>();
+                gridPiece_Obstacle.isEmpty = true;
+                gridPiece_Obstacle.isWalkable = true;
+                gridPiece_Obstacle.CreateWall(obstaclePref);
+                piece = gridPiece_Obstacle;
                 break;
+<<<<<<< HEAD
             case GridPieceType.Damage:
                 GridPiece_Obstaculo gridPiece_Obstaculo = pieceObj.GetComponent<GridPiece_Obstaculo>();
                 gridPiece_Obstaculo.isWalkable = true;
@@ -85,27 +95,83 @@ public class GridManager : MonoBehaviour
                 piece = gridPiece_Obstaculo;
                 break;
 
+=======
+            case GridPieceType.Banana:
+                GridPiece_Banana gridPiece_Banana = pieceObj.GetComponent<GridPiece_Banana>();
+                gridPiece_Banana.isEmpty = true;
+                gridPiece_Banana.isWalkable = true;
+                gridPiece_Banana.CreateWall(bananaPref);
+                piece = gridPiece_Banana;
+                break;
+            case GridPieceType.Coke:
+                GridPiece_Coke gridPiece_Coke = pieceObj.GetComponent<GridPiece_Coke>();
+                gridPiece_Coke.isEmpty = true;
+                gridPiece_Coke.isWalkable = true;
+                gridPiece_Coke.CreateWall(cokePref);
+                piece = gridPiece_Coke;
+                break;
+        }
+
+        if ((gridPos.x + gridPos.y) % 2 == 0)
+        {
+            piece.ChangeColor(green, false);
+        }
+        else
+        {
+            piece.ChangeColor(darkerGreen, false);
+        }
+
+        if (gridPos.x <= 5 && gridPos.y >= 76)
+        {
+            
+            piece.ChangeColor(lightGreen, false);
+
+            if ((gridPos.x + gridPos.y) % 2 == 0)
+            {
+                piece.ChangeColor(lighterGreen, false);
+            }
+>>>>>>> CreaturaDanger
         }
 
         return piece;   
     }
 
-    //Se encarga de elegir el tipo de pieza segun la posicion
     GridPieceType GetPieceType(Vector2Int pos)
     {
         GridPieceType gridPieceType = GridPieceType.Empty;
+<<<<<<< HEAD
         if (pos.x == 0 || pos.x == gridSize.x - 1 || pos.y == 0 || pos.y == gridSize.y - 1)
+=======
+
+        if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
+>>>>>>> CreaturaDanger
         {
             gridPieceType = GridPieceType.Wall;
         }
-        else if (pos.x == 1 || pos.x == gridSize.x - 2 || pos.y == 1 || pos.y == gridSize.y - 2)
+        else if (Random.Range(0f, 10f) < 0.45f)
         {
-            gridPieceType = GridPieceType.DestructibleWall;
+            gridPieceType = GridPieceType.Obstacle;
         }
+<<<<<<< HEAD
         else if (pos.x == 3 && pos.y == 3)
         {
             gridPieceType = GridPieceType.Damage;
         }
+=======
+        else if (Random.Range(0f, 10f) < 0.25f)
+        {
+            gridPieceType = GridPieceType.Banana;
+        }
+        else if (Random.Range(0f, 10f) < 0.15f)
+        {
+            gridPieceType = GridPieceType.Coke;
+        }
+        else if (pos.x == 5 && pos.y == 78)
+        {
+            gridPieceType = GridPieceType.Victory;
+        }
+
+>>>>>>> CreaturaDanger
         return gridPieceType;
     }
 

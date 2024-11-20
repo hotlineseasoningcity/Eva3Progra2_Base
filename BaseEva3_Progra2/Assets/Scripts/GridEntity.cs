@@ -6,7 +6,7 @@ public abstract class GridEntity : MonoBehaviour
 {
     public EntityType entityType;
     public Vector2Int gridPos;
-    public bool isTrigger;
+    public bool isTrigger, hasWon, hasLost;
     public float life;
     public float currentLife;
 

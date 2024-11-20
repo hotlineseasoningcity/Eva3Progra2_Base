@@ -153,14 +153,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridPiecesPrefabs:
   - {fileID: 342625477250844931, guid: 9bff716e695893347add73579a58c012, type: 3}
+  - {fileID: 2386434280516340183, guid: f95a07a78e530a028968e2711c5524a2, type: 3}
   - {fileID: 1018440231605446837, guid: 5764f58d526081c45afb841fdfe7cd1f, type: 3}
+<<<<<<< HEAD:BaseEva3_Progra2/Assets/Scenes/Ejemplo.unity
   - {fileID: 1018440231605446837, guid: 4e2664141f252c7498208cffe2105c87, type: 3}
   - {fileID: 3048860064118779354, guid: 7d6027f97ab30bf4a85d892cd4fa5f0e, type: 3}
   gridSize: {x: 10, y: 10}
+=======
+  - {fileID: 1108339041995159477, guid: 1cdf2134f935eaa4fa19bd98cb93e945, type: 3}
+  - {fileID: 1018440231605446837, guid: 40da209fb489ecbafafff56a204e6550, type: 3}
+  - {fileID: 1018440231605446837, guid: bcb91728fcbcef61595934d1d45bb355, type: 3}
+  gridSize: {x: 7, y: 80}
+>>>>>>> CreaturaDanger:BaseEva3_Progra2/Assets/Scenes/GameScene.unity
   parent: {fileID: 863806968}
+  victoryPref: {fileID: 2386434280516340183, guid: f95a07a78e530a028968e2711c5524a2, type: 3}
   wallPref: {fileID: 1744140219005918704, guid: 16608fe5f0d1848429d3a15335775c49, type: 3}
+<<<<<<< HEAD:BaseEva3_Progra2/Assets/Scenes/Ejemplo.unity
   wallDestructiblePref: {fileID: 1744140219005918704, guid: 53914c0aa552e274b82143830c478cf5, type: 3}
   lava: {fileID: 3048860064118779354, guid: 7d6027f97ab30bf4a85d892cd4fa5f0e, type: 3}
+=======
+  obstaclePref: {fileID: 1108339041995159477, guid: 1cdf2134f935eaa4fa19bd98cb93e945, type: 3}
+  bananaPref: {fileID: 303489876756636593, guid: ae2dd90884527be08b16d79f1843cf2d, type: 3}
+  cokePref: {fileID: 3301501191795869634, guid: ff8cd3ef73e563b1ab2848c3b2522c12, type: 3}
+  lighterGreen: {r: 0.876424, g: 0.9528302, b: 0.89075017, a: 0}
+  lightGreen: {r: 0.75444996, g: 0.9245283, b: 0.75444996, a: 0}
+  green: {r: 0.5752492, g: 0.8773585, b: 0.61413455, a: 0}
+  darkerGreen: {r: 0.4278537, g: 0.745283, b: 0.4253738, a: 0}
+>>>>>>> CreaturaDanger:BaseEva3_Progra2/Assets/Scenes/GameScene.unity
 --- !u!4 &389208968
 Transform:
   m_ObjectHideFlags: 0
@@ -386,13 +405,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.0017343406, y: 0.7662486, z: -0.6425386, w: -0.0020682137}
+  m_LocalPosition: {x: 3.8102412, y: 12.684809, z: 7.5242853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD:BaseEva3_Progra2/Assets/Scenes/Ejemplo.unity
 --- !u!114 &2121975121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +434,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8776783147009123382, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
   m_PrefabInstance: {fileID: 6728607303571594888}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> CreaturaDanger:BaseEva3_Progra2/Assets/Scenes/GameScene.unity
 --- !u!1001 &6728607303571594888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,31 +446,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 5.574747
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 13.337486
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 4.7158666
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.73958623
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.67302006
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.0055434373
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0050446964
       objectReference: {fileID: 0}
     - target: {fileID: 1090877558956790702, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -485,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 2405268839720847306, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: gridShooter
       value: 
-      objectReference: {fileID: 2121975121}
+      objectReference: {fileID: 0}
     - target: {fileID: 8776783147009123382, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
       propertyPath: m_Name
       value: Player
@@ -493,10 +515,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8776783147009123382, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2121975121}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ee65c3e8413194691fc07f46db9cff, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

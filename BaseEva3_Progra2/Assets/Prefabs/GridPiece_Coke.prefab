@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 352559655552579447}
   - component: {fileID: 1777307405826939531}
   - component: {fileID: 7269228320058133632}
-  - component: {fileID: 6343702383475982250}
+  - component: {fileID: 760126503401681952}
   m_Layer: 0
-  m_Name: GridPiece_Destructible
+  m_Name: GridPiece_Coke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6343702383475982250
+--- !u!114 &760126503401681952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,13 +93,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018440231605446837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58f9c3147d66ce4199d2ee126b0538c, type: 3}
+  m_Script: {fileID: 11500000, guid: 46bfbeaf7ea85f7448b44b482cc132c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 7269228320058133632}
   pos: {x: 0, y: 0}
   isWalkable: 0
   isEmpty: 0
-  pieceType: 1
-  isDestructible: 1
+  pieceType: 4
   yOffSet: 1
