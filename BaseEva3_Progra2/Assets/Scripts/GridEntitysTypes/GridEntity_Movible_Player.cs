@@ -36,8 +36,6 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
     void MoveInputs()
     {
-        if (Time.time - lastMov >= coolDown)
-        {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
             Vector2Int dir = Vector2Int.zero;
@@ -66,7 +64,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
                 lastMov = Time.time;
             }
-        }
+        
     }
 
     public override void InteractWhitOtherEntity(GridEntity other)

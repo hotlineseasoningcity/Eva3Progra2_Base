@@ -5,29 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GridPiece_Victory victory;
-    public GridEntity_Movible_Player player;
-
-    void LoadVictory()
+    public void LoadVictory()
     {
        SceneManager.LoadScene("VictoryScene");
     }
 
-    void LoadDefeat()
+    public void LoadDefeat()
     {
        SceneManager.LoadScene("DefeatScene");
-    }
-    
-    void Update()
-    {
-        if (victory.isVictoryTriggered == true)
-        {
-            LoadVictory();
-        }
-
-        if (player.hasLost == true)
-        {
-            LoadDefeat();
-        }
     }
 }

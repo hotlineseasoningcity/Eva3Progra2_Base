@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class GridPiece_Victory : GridPiece
 {
-    public bool isVictoryTriggered;
-
     public override void OnEntityEnter(GridEntity gridEntity)
     {
         currentGridEntity = gridEntity;
-        gridEntity.hasWon = true;
-        isVictoryTriggered = true;
+        gridEntity.Win();
     }
 
     public override void OnEntityExit()

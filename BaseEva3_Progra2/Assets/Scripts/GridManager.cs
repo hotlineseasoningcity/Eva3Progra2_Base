@@ -140,7 +140,7 @@ public class GridManager : MonoBehaviour
         {
             gridPieceType = GridPieceType.Coke;
         }
-        else if (pos.x == 5 && pos.y == 78)
+        else if (pos.x <= 5 && pos.y >= 76)
         {
             gridPieceType = GridPieceType.Victory;
         }
