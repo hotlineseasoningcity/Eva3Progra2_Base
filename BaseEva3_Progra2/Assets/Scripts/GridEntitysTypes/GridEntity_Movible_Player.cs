@@ -59,7 +59,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
             if (dir.magnitude != 0)
             {
-                transform.forward = new Vector3(dir.x, 0, dir.y);
+                transform.forward = new Vector3(dir.x + 90, 0, dir.y);
                 Move(dir);
 
                 lastMov = Time.time;
