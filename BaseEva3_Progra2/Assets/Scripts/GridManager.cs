@@ -9,14 +9,8 @@ public class GridManager : MonoBehaviour
     public Vector2Int gridSize;
     public Transform parent;
 
-<<<<<<< HEAD
-    public GameObject wallPref;
-    public GameObject wallDestructiblePref;
-    public GameObject lava;
-=======
     public GameObject victoryPref, wallPref, obstaclePref, bananaPref, cokePref;
     public Color lighterGreen, lightGreen, green, darkerGreen;
->>>>>>> CreaturaDanger
 
     public GridPiece[,] grid;
 
@@ -87,15 +81,6 @@ public class GridManager : MonoBehaviour
                 gridPiece_Obstacle.CreateWall(obstaclePref);
                 piece = gridPiece_Obstacle;
                 break;
-<<<<<<< HEAD
-            case GridPieceType.Damage:
-                GridPiece_Obstaculo gridPiece_Obstaculo = pieceObj.GetComponent<GridPiece_Obstaculo>();
-                gridPiece_Obstaculo.isWalkable = true;
-                gridPiece_Obstaculo.isEmpty = true;
-                piece = gridPiece_Obstaculo;
-                break;
-
-=======
             case GridPieceType.Banana:
                 GridPiece_Banana gridPiece_Banana = pieceObj.GetComponent<GridPiece_Banana>();
                 gridPiece_Banana.isEmpty = true;
@@ -130,7 +115,6 @@ public class GridManager : MonoBehaviour
             {
                 piece.ChangeColor(lighterGreen, false);
             }
->>>>>>> CreaturaDanger
         }
 
         return piece;   
@@ -139,12 +123,8 @@ public class GridManager : MonoBehaviour
     GridPieceType GetPieceType(Vector2Int pos)
     {
         GridPieceType gridPieceType = GridPieceType.Empty;
-<<<<<<< HEAD
-        if (pos.x == 0 || pos.x == gridSize.x - 1 || pos.y == 0 || pos.y == gridSize.y - 1)
-=======
 
         if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
->>>>>>> CreaturaDanger
         {
             gridPieceType = GridPieceType.Wall;
         }
@@ -152,12 +132,6 @@ public class GridManager : MonoBehaviour
         {
             gridPieceType = GridPieceType.Obstacle;
         }
-<<<<<<< HEAD
-        else if (pos.x == 3 && pos.y == 3)
-        {
-            gridPieceType = GridPieceType.Damage;
-        }
-=======
         else if (Random.Range(0f, 10f) < 0.25f)
         {
             gridPieceType = GridPieceType.Banana;
@@ -171,7 +145,6 @@ public class GridManager : MonoBehaviour
             gridPieceType = GridPieceType.Victory;
         }
 
->>>>>>> CreaturaDanger
         return gridPieceType;
     }
 
