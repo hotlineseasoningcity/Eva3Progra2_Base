@@ -59,7 +59,7 @@ public abstract class GridEntity_Movible : GridEntity
         //Al terminar mi movimiento cambio mi posicion
         gridPos = newPos;
 
-        //Llamo a la función OnEntityEnter de la GridPiece a la que entro y me entrego 1313
+        //Llamo a la funciï¿½n OnEntityEnter de la GridPiece a la que entro y me entrego 1313
         GridPiece newGridPiece = gridManager.grid[newPos.x, newPos.y];
         newGridPiece.OnEntityEnter(this);
         isMoving = false;

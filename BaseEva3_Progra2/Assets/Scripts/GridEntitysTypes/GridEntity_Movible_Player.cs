@@ -31,7 +31,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
     {
         gridPos = pos;
         gridManager.GetGridPiece(pos).OnEntityEnter(this);
-        transform.position = new Vector3(pos.x, yPos, pos.y);
+        transform.position = new Vector3(pos.x, yPos, pos.y - 0.55f);
     }
 
     void MoveInputs()

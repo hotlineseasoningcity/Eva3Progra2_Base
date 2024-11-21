@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8776783147009123382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.1600685, y: 0, z: 1.8114958}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,12 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 0
-  gridPos: {x: 2, y: 2}
+  gridPos: {x: 0, y: 0}
   isTrigger: 0
   hasWon: 0
   hasLost: 0
   life: 0
   currentLife: 0
+  gameManager: {fileID: 0}
   gridManager: {fileID: 0}
   spd: 5
   yPos: 0

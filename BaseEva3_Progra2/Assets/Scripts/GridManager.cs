@@ -27,7 +27,7 @@ public class GridManager : MonoBehaviour
 
         for (int x = 0; x < gridSize.x; x++)
         {
-            for(int z = 0; z < gridSize.y; z++)
+            for (int z = 0; z < gridSize.y; z++)
             {
                 //Obtengo posicion en grilla
                 Vector2Int gridPos = new Vector2Int(x, z);
