@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class GridEntity_Movible_Player : GridEntity_Movible
@@ -30,12 +31,11 @@ public class GridEntity_Movible_Player : GridEntity_Movible
     {
         gridPos = pos;
         gridManager.GetGridPiece(pos).OnEntityEnter(this);
+        transform.position = new Vector3(pos.x, yPos, pos.y - 0.55f);
     }
 
     void MoveInputs()
     {
-        if (Time.time - lastMov >= coolDown)
-        {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
             Vector2Int dir = Vector2Int.zero;
@@ -59,12 +59,12 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
             if (dir.magnitude != 0)
             {
-                transform.forward = new Vector3(dir.x, 0, dir.y);
+                transform.forward = new Vector3(dir.x + 90, 0, dir.y);
                 Move(dir);
 
                 lastMov = Time.time;
             }
-        }
+        
     }
 
     public override void InteractWhitOtherEntity(GridEntity other)

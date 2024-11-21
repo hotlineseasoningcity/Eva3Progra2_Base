@@ -9,6 +9,7 @@ public abstract class GridEntity : MonoBehaviour
     public bool isTrigger, hasWon, hasLost;
     public float life;
     public float currentLife;
+    public GameManager gameManager;
 
     private void Awake()
     {
@@ -25,6 +26,20 @@ public abstract class GridEntity : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public virtual void Win()
+    {
+        hasWon = true;
+        gameManager.LoadVictory();
+
+    }
+
+    public virtual void Lose()
+    {
+        hasLost = true;
+        gameManager.LoadDefeat();
+
     }
 
     protected abstract void Die();
