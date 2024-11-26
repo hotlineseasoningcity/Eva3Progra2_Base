@@ -8,6 +8,7 @@ public class GridEntity_Movible_Player : GridEntity_Movible
     public Vector2Int startPos;
     private float lastMov = 0f;
     private float coolDown = 0.7f;
+    private bool hasMoved = false;
 
     protected override void Awake2()
     {
@@ -59,11 +60,17 @@ public class GridEntity_Movible_Player : GridEntity_Movible
 
             if (dir.magnitude != 0)
             {
+
+                if (!hasMoved)
+                {
+                    gridManager.PlayerMoved();
+                    hasMoved = true;
+                }
                 transform.forward = new Vector3(dir.x + 90, 0, dir.y);
                 Move(dir);
 
                 lastMov = Time.time;
-            }
+             }
         
     }
 
@@ -78,5 +85,16 @@ public class GridEntity_Movible_Player : GridEntity_Movible
         gameObject.SetActive(false);
         hasLost = true;
         print("PlayerDead");
+
+        if (gameManager != null)
+        {
+            gameManager.LoadDefeat();
+            Debug.Log("Llamando defeat");
+        }
+        else
+        {
+            Debug.LogError("manager no asignado");
+        }
+
     }
 }

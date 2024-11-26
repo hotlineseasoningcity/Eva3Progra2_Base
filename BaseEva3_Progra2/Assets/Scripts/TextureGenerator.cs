@@ -7,6 +7,7 @@ public class TextureGenerator : MonoBehaviour
     public Texture2D creature;
     public MeshRenderer piecePrefab;
     public Transform parent;
+    public Vector2 offset = Vector2.zero;
 
     void Start()
     {
@@ -15,19 +16,25 @@ public class TextureGenerator : MonoBehaviour
 
     void CheckForPiece(int x, int y)
     {
-        Color pixelColor = creature.GetPixel(x, y);
+        int adjustedX = x + Mathf.FloorToInt(offset.x);
+        int adjustedY = y + Mathf.FloorToInt(offset.y);
 
-        if (pixelColor == Color.red) { return; }
+        if (adjustedX >= 0 && adjustedX < creature.width && adjustedY >= 0 && adjustedY < creature.height)
+        {
+            Color pixelColor = creature.GetPixel(adjustedX, adjustedY);
 
-        MeshRenderer newPiece = Instantiate(piecePrefab, new Vector3(x, y, 0), Quaternion.identity, parent);
+            if (pixelColor == Color.red) { return; }
+
+            MeshRenderer newPiece = Instantiate(piecePrefab, new Vector3(x, y, 0), Quaternion.identity, parent);
         
-        if (pixelColor == Color.white)
-        {
-            newPiece.material.color = Color.white;
-        }
-        else if (pixelColor == Color.black)
-        {
-            newPiece.material.color = Color.black;
+            if (pixelColor == Color.white)
+            {
+                newPiece.material.color = Color.white;
+            }
+            else if (pixelColor == Color.black)
+            {
+                newPiece.material.color = Color.black;
+            }
         }
     }
 

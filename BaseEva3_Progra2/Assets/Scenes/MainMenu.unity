@@ -664,7 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 3
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -926,6 +926,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1452737754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1452737756}
+  - component: {fileID: 1452737755}
+  m_Layer: 0
+  m_Name: MapaTextura
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1452737755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452737754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41584fcafa251c90ea38398759a6d31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creature: {fileID: 2800000, guid: 6f222a0e4cf8b008587d068bafd10fc8, type: 3}
+  piecePrefab: {fileID: 7269228320058133632, guid: 5764f58d526081c45afb841fdfe7cd1f, type: 3}
+  parent: {fileID: 1452737756}
+  offset: {x: 10, y: 10}
+--- !u!4 &1452737756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452737754}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 183, y: 205, z: 36.61303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545854001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,11 +1175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057003711182726106, guid: 3096099870abec34aad0435d63ed72b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -367
+      value: -470.5
       objectReference: {fileID: 0}
     - target: {fileID: 7057003711182726106, guid: 3096099870abec34aad0435d63ed72b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -196.7
+      value: -266.2
       objectReference: {fileID: 0}
     - target: {fileID: 7057003711182726106, guid: 3096099870abec34aad0435d63ed72b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1230,3 +1278,4 @@ SceneRoots:
   - {fileID: 2125102324}
   - {fileID: 985523351}
   - {fileID: 1304519218}
+  - {fileID: 1452737756}

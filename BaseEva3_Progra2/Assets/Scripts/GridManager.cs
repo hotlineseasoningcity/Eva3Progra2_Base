@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -13,10 +14,19 @@ public class GridManager : MonoBehaviour
     public Color lighterGreen, lightGreen, green, darkerGreen;
 
     public GridPiece[,] grid;
+    private List<GridPiece> blackWallLine = new List<GridPiece>();
+    private bool playerMoved = false;
+
 
     private void Awake()
     {
-        CreateGrid();
+        CreateGrid(); 
+        CreateBlackWallLine();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(WaitForPlayerMove());
     }
 
     //Se encarga de crear la grilla
@@ -27,20 +37,51 @@ public class GridManager : MonoBehaviour
 
         for (int x = 0; x < gridSize.x; x++)
         {
-            for(int z = 0; z < gridSize.y; z++)
+            for (int z = 0; z < gridSize.y; z++)
             {
                 //Obtengo posicion en grilla
                 Vector2Int gridPos = new Vector2Int(x, z);
-                
+
                 //Segun la posicion devuelvo un tipo de pieza
                 GridPieceType gridPieceType = GetPieceType(gridPos);
-                
+
                 //Ocupo la posicion en grilla y el tipo de pieza para instancia la pieza
                 GridPiece newPiece = CreatePiece(gridPieceType, gridPos);
                 newPiece.pos = gridPos;
                 //Guardo la pieza creada en la matriz
-                grid[x,z] = newPiece;
+                grid[x, z] = newPiece;
             }
+        }
+    }
+    private void CreateBlackWallLine()
+    {
+        for (int x = 0; x < gridSize.x; x++)
+        {
+            Vector2Int gridPos = new Vector2Int(x, gridSize.y - 1);
+            GridPiece piece = CreatePiece(GridPieceType.Wall, gridPos);
+            piece.ChangeColor(Color.black, true);
+            blackWallLine.Add(piece);
+        }
+    }
+    private IEnumerator WaitForPlayerMove()
+    {
+        yield return new WaitUntil(() => playerMoved);
+        StartCoroutine(MoveBlackWallLine());
+    }
+    private IEnumerator MoveBlackWallLine()
+    {
+        while (true)
+        {
+            foreach (var piece in blackWallLine)
+            {
+                Vector2Int newPos = piece.pos + Vector2Int.down;
+                if (IsPosOnArray(newPos))
+                {
+                    piece.transform.position += new Vector3(0, 0, -1);
+                    piece.pos = newPos;
+                }
+            }
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -48,11 +89,11 @@ public class GridManager : MonoBehaviour
     GridPiece CreatePiece(GridPieceType pieceType, Vector2Int gridPos)
     {
         GridPiece piece = null;
-        Vector3 position = new Vector3(gridPos.x,-0.5f, gridPos.y);
+        Vector3 position = new Vector3(gridPos.x, -0.5f, gridPos.y);
         GameObject pref = gridPiecesPrefabs[(int)pieceType];
 
-        GameObject pieceObj = Instantiate(pref, position, Quaternion.identity,parent);
-        
+        GameObject pieceObj = Instantiate(pref, position, Quaternion.identity, parent);
+
         switch (pieceType)
         {
             case GridPieceType.Empty:
@@ -108,7 +149,7 @@ public class GridManager : MonoBehaviour
 
         if (gridPos.x <= 5 && gridPos.y >= 76)
         {
-            
+
             piece.ChangeColor(lightGreen, false);
 
             if ((gridPos.x + gridPos.y) % 2 == 0)
@@ -117,14 +158,14 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        return piece;   
+        return piece;
     }
 
     GridPieceType GetPieceType(Vector2Int pos)
     {
         GridPieceType gridPieceType = GridPieceType.Empty;
 
-        if(pos.x == 0 || pos.x == gridSize.x-1 || pos.y == 0 || pos.y == gridSize.y-1)
+        if (pos.x == 0 || pos.x == gridSize.x - 1 || pos.y == 0 || pos.y == gridSize.y - 1)
         {
             gridPieceType = GridPieceType.Wall;
         }
@@ -155,11 +196,15 @@ public class GridManager : MonoBehaviour
 
     public GridPiece GetGridPiece(Vector2Int piecePos)
     {
-        return grid[piecePos.x,piecePos.y];
+        return grid[piecePos.x, piecePos.y];
     }
 
     public bool IsPosOnArray(Vector2Int pos)
     {
         return pos.x >= 0 && pos.x < gridSize.x && pos.y >= 0 && pos.y < gridSize.y;
+    }
+    public void PlayerMoved()
+    {
+        playerMoved = true;
     }
 }

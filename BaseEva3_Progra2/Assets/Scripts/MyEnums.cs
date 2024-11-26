@@ -6,11 +6,12 @@ public enum GridPieceType
     Wall,
     Obstacle,
     Banana,
-    Coke
+    Coke,
 }
 
 public enum EntityType
-{ 
-    Player
+{
+    Player,
+    Void
 }
 
